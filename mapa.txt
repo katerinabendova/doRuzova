@@ -1,0 +1,9 @@
+komnata krajina
+divadlo krajina
+tma krajina
+kuchyne krajina
+atelier krajina
+knihovna krajina pokoj
+mistnost krajina
+krajina komnata divadlo tma kuchyne atelier knihovna mistnost
+pokoj knihovna

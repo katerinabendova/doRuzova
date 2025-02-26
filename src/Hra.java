@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Hra {
-    private MapaMistnosti mapa;
+    protected MapaMistnosti mapa;
 
     public Hra(MapaMistnosti mapa) {
         this.mapa = mapa;

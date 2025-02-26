@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class Mistnost {
     protected String nazev;
@@ -20,5 +21,9 @@ public class Mistnost {
 
     public String getNazev() {
         return nazev;
+    }
+
+    public Set<String> getMozneVychody(){
+        return vychody.keySet();
     }
 }

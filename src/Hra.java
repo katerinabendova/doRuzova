@@ -19,4 +19,10 @@ public class Hra {
             mapa.jdi(prikaz);
         }
     }
+    public void vstupDoMistnosti(){
+
+    }
+    public void presunHrace(){
+
+    }
 }

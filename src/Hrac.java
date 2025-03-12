@@ -1,13 +1,16 @@
 import postavy.Postava;
 
-import java.util.ArrayList;
 
 public class Hrac extends Postava {
-    private ArrayList <String> inventar;
-    public Hrac(int zivoty, String schopnost, String predmet, String jmeno) {
-        super(zivoty, schopnost, predmet, jmeno);
-    }
-    public void pridejDoInventare(){
+    private Inventar inventar;
 
+
+    public Hrac(int zivoty, String schopnost, String jmeno) {
+        super(zivoty, schopnost, jmeno);
+        this.inventar = new Inventar();
+    }
+
+    public Inventar getInventar(){
+        return inventar;
     }
 }

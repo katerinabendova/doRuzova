@@ -2,9 +2,13 @@ import java.util.Scanner;
 
 public class Hra {
     protected MapaMistnosti mapa;
+    private Hrac hrac;
+    private SpravcePrikazu spravce;
 
-    public Hra(MapaMistnosti mapa) {
+    public Hra(MapaMistnosti mapa, Hrac hrac) {
         this.mapa = mapa;
+        this.hrac = hrac;
+        this.spravce = new SpravcePrikazu();
     }
 
     public void spustit() {
@@ -20,7 +24,7 @@ public class Hra {
         }
     }
     public void vstupDoMistnosti(){
-
+        Konzole.vypis("Nachazis se v mistnosti: ");
     }
     public void presunHrace(){
 

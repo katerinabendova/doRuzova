@@ -1,3 +1,5 @@
+import hrac.MapaMistnosti;
+
 import java.util.Scanner;
 
 public class PrikazJdi implements Prikaz{

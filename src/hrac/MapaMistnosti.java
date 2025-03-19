@@ -1,3 +1,5 @@
+package hrac;
+
 import mistnosti.Mistnost;
 
 import java.io.BufferedReader;
@@ -12,19 +14,19 @@ public class MapaMistnosti {
 
     public MapaMistnosti(String soubor) throws IOException {
         mistnosti = new HashMap<>();
-        nactiZeSouboru(soubor);
+        nactiZeSouboru();
     }
 
-    private void nactiZeSouboru(String soubor) throws IOException {
-        BufferedReader rd = new BufferedReader(new FileReader(soubor));
+    private void nactiZeSouboru() throws IOException {
+        BufferedReader rd = new BufferedReader(new FileReader("mistnosti.txt"));
         String radek;
         while ((radek = rd.readLine()) != null) {
-            String[] casti = radek.split(" ");
-            String nazev = casti[0];
+            String[] cast = radek.split(" ");
+            String nazev = cast[0];
             mistnosti.putIfAbsent(nazev, new Mistnost(nazev));
 
-            for (int i = 1; i < casti.length; i ++) {
-                String cil = casti[i];
+            for (int i = 1; i < cast.length; i ++) {
+                String cil = cast[i];
                 mistnosti.putIfAbsent(cil, new Mistnost(cil));
                 mistnosti.get(nazev).pridatVychod(cil, mistnosti.get(cil));
             }
@@ -42,7 +44,7 @@ public class MapaMistnosti {
             aktualniMistnost = nova;
             zobrazAktualniMistnost();
         } else {
-            System.out.println("Tímhle směrem se vydat nemůžeš");
+            System.out.println("timto smerem se vydan nemuzes");
         }
     }
 
@@ -50,4 +52,20 @@ public class MapaMistnosti {
         System.out.println("Jsi v: " + aktualniMistnost.getNazev());
         System.out.println("Muzes jit do: " + String.join(", ", aktualniMistnost.getMozneVychody()));
     }
+
+    //chat GPT
+    public int pocetMistnosti() {
+        return (int) mistnosti.keySet().stream()
+                .filter(nazev -> !nazev.equalsIgnoreCase("unikova mistnost"))
+                .count();
+    }
+
+    public Mistnost getMistnost(String nazev){
+        return mistnosti.get(nazev);
+    }
+
+    public Mistnost getAktualniMistnost(){
+        return aktualniMistnost;
+    }
+
 }

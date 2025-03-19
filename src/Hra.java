@@ -1,13 +1,16 @@
+import hrac.Konzole;
+import hrac.MapaMistnosti;
+import postavy.Peadyn;
+
 import java.util.Scanner;
 
 public class Hra {
     protected MapaMistnosti mapa;
-    private Hrac hrac;
+    private Peadyn peadyn;
     private SpravcePrikazu spravce;
 
-    public Hra(MapaMistnosti mapa, Hrac hrac) {
+    public Hra(MapaMistnosti mapa) {
         this.mapa = mapa;
-        this.hrac = hrac;
         this.spravce = new SpravcePrikazu();
     }
 

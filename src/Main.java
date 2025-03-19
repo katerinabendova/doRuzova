@@ -1,8 +1,14 @@
+import hrac.Konzole;
+
 import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        Konzole k = new Konzole();
-        k.spustit();
+        try {
+            Konzole k = new Konzole();
+            k.spustit();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 }

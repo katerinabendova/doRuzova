@@ -1,7 +1,5 @@
 package postavy;
 
-import mistnosti.Mistnost;
-
 public abstract class Postava {
     protected String jmeno;
     protected String schopnost;
@@ -13,9 +11,12 @@ public abstract class Postava {
     }
 
     public void predstavSe(){
-        System.out.println("Ahoj! Jmenuji se: " + jmeno + ", má schopnost je: " + schopnost);
+        System.out.println("AHOJ! ME JMENO JE: " + jmeno + ", MA SCHOPNOST JE: " + schopnost);
+    }
+
+    public String getJmeno() {
+        return jmeno;
     }
 
     public abstract void komunikuj();
-
 }

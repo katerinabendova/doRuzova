@@ -1,7 +1,5 @@
 package postavy;
 
-import mistnosti.Mistnost;
-
 public class Pruvodce extends Postava {
     public Pruvodce( String schopnost, String jmeno) {
         super(schopnost, jmeno);

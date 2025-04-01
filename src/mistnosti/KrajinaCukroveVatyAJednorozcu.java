@@ -14,7 +14,7 @@ public class KrajinaCukroveVatyAJednorozcu extends NeutralniMistnost {
 
     public void vypraveni() throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
-        System.out.println("pokud chces zobrazit vypraveni napis 'vypraveni'");
+        System.out.println("POKUD CHCES UKAZAT VYPRAVENI NAPIS 'vypraveni'.");
         String vstup = sc.nextLine().trim().toLowerCase();
 
         if (vstup.equals("vypraveni")) {
@@ -28,4 +28,6 @@ public class KrajinaCukroveVatyAJednorozcu extends NeutralniMistnost {
             }
         }
     }
+
+
 }

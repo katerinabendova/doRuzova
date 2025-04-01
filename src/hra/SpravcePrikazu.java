@@ -1,3 +1,5 @@
+package hra;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +19,10 @@ public class SpravcePrikazu {
         if (prikaz != null){
             prikaz.proved();
         } else {
-            System.out.println("Prikaz je neplatny!!!");
+            System.out.println("PRIKAZ JE NEPLATNY.");
         }
+    }
+    public boolean maPrikaz(String nazev){
+        return prikazy.containsKey(nazev);
     }
 }

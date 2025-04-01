@@ -1,33 +1,45 @@
 package mistnosti;
 
+import postavy.Peadyn;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ZrcadlovaKomnata extends MistnostSUkolem{
+public class ZrcadlovaKomnata extends MistnostSUkolem {
+    private Peadyn peadyn;
 
     public ZrcadlovaKomnata(String nazev) {
         super(nazev);
+       // this.peadyn = new Peadyn("boj s dykou", "Peadyn");
     }
 
     public void ukol() throws FileNotFoundException {
-        try (BufferedReader br = new BufferedReader(new FileReader("znaky.txt"))){
+        try (BufferedReader br = new BufferedReader(new FileReader("znaky.txt"))) {
             String radek = br.readLine();
-            if (radek != null){
-                String[] cast = radek.split(" ");
-                String textovyRetezec = cast[0];
-                String spravnaOdpoved = cast[1];
+            boolean spravne;
+            int zivoty = peadyn.getZivoty();
 
-                System.out.println("V textovemk retezci najdi jiny znak: " + textovyRetezec);
-                System.out.println("Zadej svou odpoved: ");
-                Scanner sc = new Scanner(System.in);
-                String odpoved = sc.nextLine().trim();
-                if (odpoved.equalsIgnoreCase(spravnaOdpoved)){
-                    System.out.println("Spravne ziskavas 3 zivoty navic!");
-                } else {
-                    System.out.println("Spatne! zadal jsi spatnou odpoved");
+            while (spravne = true) {
+                if (radek != null) {
+                    String[] cast = radek.split(" ");
+                    String textovyRetezec = cast[0];
+                    String spravnaOdpoved = cast[1];
+
+                    System.out.println("V TEXTOVEM RETEZCI NAJDI JINY ZNAK: " + textovyRetezec);
+                    System.out.println("ZADEJ SVOU ODPOVED: ");
+                    Scanner sc = new Scanner(System.in);
+                    String odpoved = sc.nextLine().trim();
+                    if (odpoved.equalsIgnoreCase(spravnaOdpoved)) {
+                        zivoty ++;
+                        spravne = true;
+                        System.out.println("SPRAVNE, ZISKAVAS 3 ZIVOTY NAVIC!");
+                    } else {
+                        spravne = false;
+                        System.out.println("SPATNE, ZKUS TO ZNOVU.");
+                    }
                 }
             }
         } catch (IOException e) {

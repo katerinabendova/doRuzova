@@ -1,3 +1,7 @@
+package hra;
+
+import mistnosti.Mistnost;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -9,6 +13,7 @@ public class Ukol {
     private String nazev;
     private String popis;
     private String odpoved;
+    private Mistnost aktualniMistnost;
 
     public Ukol(String soubor) throws IOException {
         List<String> radky = new ArrayList<>();
@@ -29,7 +34,15 @@ public class Ukol {
     }
 
     public void zobrazUkol(){
-        System.out.println("Ukol: " + nazev);
+        System.out.println("UKOL: " + nazev);
         System.out.println(popis);
     }
+    public Mistnost getAktualniMistnost() {
+        return getAktualniMistnost();
+    }
+
+    public void setAktualniMistnost(Mistnost mistnost) {
+        this.aktualniMistnost = mistnost;
+    }
 }
+

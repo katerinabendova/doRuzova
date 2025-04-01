@@ -1,4 +1,4 @@
-import hrac.Konzole;
+import hra.Konzole;
 
 import java.io.IOException;
 

@@ -1,35 +1,40 @@
-import hrac.Konzole;
-import hrac.MapaMistnosti;
+import hra.MapaMistnosti;
+import hra.SpravcePrikazu;
+import mistnosti.Mistnost;
 import postavy.Peadyn;
 
-import java.util.Scanner;
-
 public class Hra {
+
     protected MapaMistnosti mapa;
     private Peadyn peadyn;
     private SpravcePrikazu spravce;
 
-    public Hra(MapaMistnosti mapa) {
-        this.mapa = mapa;
-        this.spravce = new SpravcePrikazu();
+     public Hra(MapaMistnosti mapa) {
+         this.mapa = mapa;
+         this.spravce = new SpravcePrikazu();
+         if (mapa != null) {
+             Mistnost startovniMistnost = mapa.getStartovaciMistnost();
+             if (startovniMistnost != null) {
+                 this.peadyn = new Peadyn("boj s dykou", "Peadyn", startovniMistnost);
+                 this.peadyn.setAktualniMistnost(startovniMistnost);
+             } else {
+                 System.out.println("Chyba: Startovní místnost je null!");
+             }
+         } else {
+             System.out.println("Chyba: MapaMistnosti je null!");
+         }
     }
-
-    public void spustit() {
-        Scanner scanner = new Scanner(System.in);
-        String prikaz;
-
-        while (true) {
-            mapa.zobrazAktualniMistnost();
-            System.out.print("Kam chceš jít? (zadej název místnosti) nebo 'konec': ");
-            prikaz = scanner.nextLine().trim().toLowerCase();
-            if (prikaz.equals("konec")) break;
-            mapa.jdi(prikaz);
+    public void nastavAktualniMistnost(Mistnost mistnost) {
+        if (peadyn != null) {
+            peadyn.setAktualniMistnost(mistnost);
+        } else {
+            System.out.println("Chyba: Peadyn nebyl inicializován!");
         }
     }
-    public void vstupDoMistnosti(){
-        Konzole.vypis("Nachazis se v mistnosti: ");
+    public Peadyn getPeadyn() {
+        return peadyn;
     }
-    public void presunHrace(){
 
-    }
+
 }
+

@@ -1,7 +1,5 @@
 package postavy;
 
-import mistnosti.Mistnost;
-
 public class Nepritel extends Postava{
     private int sila;
 
@@ -11,7 +9,7 @@ public class Nepritel extends Postava{
     }
 
     public void bojuj(){
-        System.out.println(jmeno + " s tebou chce bojovat, sila: " + sila);
+        System.out.println(jmeno + " S TEBOU CHCE BOJOVAT, SILA: " + sila);
     }
 
     @Override

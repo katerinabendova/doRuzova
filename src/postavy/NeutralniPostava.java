@@ -1,7 +1,5 @@
 package postavy;
 
-import mistnosti.Mistnost;
-
 public class NeutralniPostava extends Postava{
     private String predmet;
     public NeutralniPostava(String schopnost, String jmeno, String predmet) {
@@ -10,7 +8,7 @@ public class NeutralniPostava extends Postava{
     }
 
     public void dejPredmet(){
-        System.out.println(jmeno + "ti dava predmet" + predmet);
+        System.out.println(jmeno + " TI DAVA PREDMET " + predmet);
     }
 
     @Override

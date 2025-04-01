@@ -1,7 +1,5 @@
 package postavy;
 
-import mistnosti.Mistnost;
-
 public class Danik extends Pruvodce {
 
 

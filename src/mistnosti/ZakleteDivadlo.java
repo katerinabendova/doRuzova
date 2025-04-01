@@ -16,14 +16,14 @@ public class ZakleteDivadlo extends MistnostSUkolem{
         boolean spravne;
 
         while (spravne = true) {
-            System.out.println("Vyres priklad: " + a + " * " + b + " = ");
+            System.out.println("VYRES PRIKLAD: " + a + " * " + b + " = ");
             int odpoved = sc.nextInt();
             if (odpoved == a * b) {
                 spravne = true;
-                System.out.println("Spravne! Dostavas diamantovy klic");
+                System.out.println("SPRAVNE! DOSTAVAS DIAMANTOVY KLIC");
             } else {
                 spravne = false;
-                System.out.println("Spatne! Zkus to znovu");
+                System.out.println("SPATNE, ZKUS TO ZNOVU.");
 
             }
         }

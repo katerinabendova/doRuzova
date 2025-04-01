@@ -25,7 +25,7 @@ public class PokojSeptajicichHlasu extends MistnostSUkolem{
         }
 
         if (radky.isEmpty()) {
-            System.out.println("Soubor neobsahuje zadna data.");
+            System.out.println("V SOUBORU NMIC NENI.");
             return;
         }
 
@@ -43,10 +43,10 @@ public class PokojSeptajicichHlasu extends MistnostSUkolem{
             String textovyRetezec = cast[0];
             String hledaneSlovo = cast[1];
 
-            System.out.println("textovy retezec: " + textovyRetezec);
+            System.out.println("TEXTOVY RETEZEC: " + textovyRetezec);
 
             Scanner sc = new Scanner(System.in);
-            System.out.println("zapis nalezene slovo: ");
+            System.out.println("ZAPIS NALEZENE SLOVO: ");
             String odpoved = sc.nextLine().trim();
 
 

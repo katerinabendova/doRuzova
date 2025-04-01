@@ -1,4 +1,4 @@
-package hrac;
+package hra;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,17 +15,17 @@ public class Inventar {
     public void pridejPredmet(String predmet){
         if (predmety.size() < kapacita){
             predmety.add(predmet);
-            Konzole.vypis("predmet " + predmet + "byl pridan do inventare.");
+            Konzole.vypis("PREDMET '" + predmet + "' BYL PRIDAN DO INVENTARE.");
         } else {
-            Konzole.vypis("hrac.Inventar je uplne plny!");
+            Konzole.vypis("INVENTAR JE PLNY!");
         }
     }
 
     public void odeberPredmet(String predmet){
         if (predmety.remove(predmet)){
-            Konzole.vypis("predmet: " + predmet + " bzl odebran z inventare.");
+            Konzole.vypis("PREDMET '" + predmet + "' BYL ODEBRAN Z INVENTARE.");
         }else {
-            Konzole.vypis("Tento predmet se v inventari nenachazi");
+            Konzole.vypis("TENTO PREDMET SE V INVENTARI NENACHAZI.");
         }
     }
 
@@ -36,7 +36,7 @@ public class Inventar {
     }
 
     public void vypisInventare(){
-        Konzole.vypis("hrac.Inventar: " + String.join(", ", predmety));
+        Konzole.vypis("OBSAH INVENTARE: " + String.join(", ", predmety));
     }
 
     public boolean obsahujePredmet(String nazev){
@@ -45,13 +45,13 @@ public class Inventar {
 
     public boolean odemkni(Set<String> navstiveneMistnosti, int pocetMistnosti){
         if (!obsahujePredmet("diamantovy klic")){
-            System.out.println("Nemas diamantovy klic");
+            System.out.println("NEMAS DIAMANTOVY KLIC.");
             return false;
         } if (navstiveneMistnosti.size() < pocetMistnosti){
-            System.out.println("Jeste jsi nanevstivil vsechny mistnosti");
+            System.out.println("JESTE JSI NENAVSTIVILA VSECHNY MISTNOSTI");
             return false;
         } else {
-            System.out.println("Unikova mistnost je odemcena");
+            System.out.println("UNIKOVA MISTNOST JE NACTENA.");
             return true;
         }
 

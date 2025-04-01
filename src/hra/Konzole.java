@@ -17,9 +17,8 @@ public class Konzole {
     public Konzole() throws IOException {
         sc = new Scanner(System.in);
         mapa = new MapaMistnosti("mistnosti.txt");
-        aktualniMistnost = mapa.getAktualniMistnost("krajina");
-        peadyn = new Peadyn("boj s dykou", "Peadyn", this.aktualniMistnost);
-        peadyn.setAktualniMistnost(this.aktualniMistnost);
+        mapa.setAktualniMistnost(new Mistnost("krajina"));
+        peadyn = new Peadyn(mapa.getAktualniMistnost());
         prikazy = new HashMap<>();
         inicializujPrikazy();
     }
@@ -34,14 +33,14 @@ public class Konzole {
 
     public void spustit() {
         System.out.println("VITEJ VE HRE DORUZOVA!\n");
-        if (mapa == null || mapa.getAktualniMistnost("krajina") == null) {
+        if (mapa == null || mapa.getAktualniMistnost() == null) {
             System.out.println("CHYBA, MAPA MISTNOSTI SE NACETLA NESPRAVNE.");
             return;
         }
         boolean konecHry = false;
         while (!konecHry) {
                 mapa.zobrazAktualniMistnost();
-                System.out.println("CO CHCES DELAT? MAS NA VYBER Z PRIKAZU: 'jdi', 'vezmi', 'pust', 'ukol', 'konec'");
+                System.out.println("CO CHCES DELAT? MAS NA VYBER Z PRIKAZU: 'jdi', 'uloz', 'vypravej', 'ukaz mapu', 'konec'");
                 String prikaz = sc.nextLine().trim().toLowerCase();
 
                 if (prikaz.equals("konec")) {
@@ -50,11 +49,11 @@ public class Konzole {
                 } else {
                     if (prikazy.containsKey(prikaz)) {
                         prikazy.get(prikaz).proved();
-                        aktualniMistnost = mapa.getAktualniMistnost("krajina");
+                        aktualniMistnost = mapa.getAktualniMistnost();
                     } else {
                         System.out.println("NEPLATNY PRIKAZ");
                     }
-                    aktualniMistnost = mapa.getAktualniMistnost("krajina");
+                    aktualniMistnost = mapa.getAktualniMistnost();
                 }
         }
     }
@@ -65,13 +64,13 @@ public class Konzole {
             System.out.println("KAM SE CHCES PRESUNOUT? ");
             String cil = sc.nextLine().trim().toLowerCase();
             mapa.jdi(cil);
-            peadyn.setAktualniMistnost(mapa.getAktualniMistnost("krajina"));
+            peadyn.setAktualniMistnost(mapa.getAktualniMistnost());
         } else if (prikaz.equals("konec")) {
             System.out.println("HRA BYLA UKONCENA.");
             System.exit(0);
         } else if (prikazy.containsKey(prikaz)) {
             prikazy.get(prikaz).proved();
-            aktualniMistnost = mapa.getAktualniMistnost("krajina");
+            aktualniMistnost = mapa.getAktualniMistnost();
         } else {
             System.out.println("NAZNAMY PRIKAZ.");
         }

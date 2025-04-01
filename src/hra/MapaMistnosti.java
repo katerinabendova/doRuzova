@@ -13,11 +13,10 @@ import java.util.Scanner;
 public class MapaMistnosti {
     protected Map<String, Mistnost> mistnosti;
     protected Mistnost aktualniMistnost;
-    private Peadyn peadyn;
+    private Peadyn peadyn = new Peadyn("boj s dykou", "Peadyn");;
 
     public MapaMistnosti(String soubor) throws IOException {
         mistnosti = new HashMap<>();
-        peadyn = new Peadyn("boj s dykou", "Peadyn");
         nactiZeSouboru();
         Mistnost vychoziMistnost = mistnosti.getOrDefault("krajina", mistnosti.values().iterator().next());
         this.peadyn.setAktualniMistnost(vychoziMistnost);
@@ -85,10 +84,13 @@ public class MapaMistnosti {
         return mistnosti.get(nazev);
     }
 
-    public Mistnost getAktualniMistnost(String krajina){
+    public Mistnost getAktualniMistnost(){
         return aktualniMistnost;
     }
 
+    public void setAktualniMistnost(Mistnost aktualniMistnost) {
+        this.aktualniMistnost = aktualniMistnost;
+    }
 
     public void jdi(String cil, Inventar inventar) {
         Mistnost nova = aktualniMistnost.getVychod(cil);

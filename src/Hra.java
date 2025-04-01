@@ -15,7 +15,7 @@ public class Hra {
          if (mapa != null) {
              Mistnost startovniMistnost = mapa.getStartovaciMistnost();
              if (startovniMistnost != null) {
-                 this.peadyn = new Peadyn("boj s dykou", "Peadyn", startovniMistnost);
+                 this.peadyn = new Peadyn( startovniMistnost);
                  this.peadyn.setAktualniMistnost(startovniMistnost);
              } else {
                  System.out.println("Chyba: Startovní místnost je null!");

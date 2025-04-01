@@ -15,7 +15,7 @@ public class KulataKnihovna extends MistnostSBojem{
         super(nazev);
         this.verity = new Verity("niceni pomoci slov", "Verity", 7);
         this.pridatPostavu(verity);
-        this.peadyn = new Peadyn("boj s dykou", "Peadyn", this);
+        this.peadyn = new Peadyn( this);
     }
 
     public void boj() {

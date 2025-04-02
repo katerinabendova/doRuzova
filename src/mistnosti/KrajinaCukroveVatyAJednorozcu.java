@@ -6,12 +6,24 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class KrajinaCukroveVatyAJednorozcu extends NeutralniMistnost {
+public class KrajinaCukroveVatyAJednorozcu extends Mistnost {
 
     public KrajinaCukroveVatyAJednorozcu(String nazev) {
         super(nazev);
     }
 
+    /**
+     * nacita ukol v aktualni mistnosti a spusti vypraveni
+     */
+    @Override
+    public void nactiUkol() throws FileNotFoundException {
+        vypraveni();
+    }
+
+    /**
+     * zobrazuje vypraveni pomoci nacitani ze souboru
+     * @throws FileNotFoundException pokud soubor 'vypraveni.txt' neni nalezen
+     */
     public void vypraveni() throws FileNotFoundException {
         Scanner sc = new Scanner(System.in);
         System.out.println("POKUD CHCES UKAZAT VYPRAVENI NAPIS 'vypraveni'.");
@@ -28,6 +40,4 @@ public class KrajinaCukroveVatyAJednorozcu extends NeutralniMistnost {
             }
         }
     }
-
-
 }

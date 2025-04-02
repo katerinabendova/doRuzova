@@ -1,5 +1,6 @@
-package mistnosti;
+package mistnosti.testy;
 
+import mistnosti.ZakleteDivadlo;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.*;

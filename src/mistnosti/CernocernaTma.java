@@ -4,10 +4,11 @@ import hra.Inventar;
 import postavy.Kai;
 import postavy.Peadyn;
 import predmety.KnihaMistnosti;
+
 import java.util.Random;
 import java.util.Scanner;
 
-public class CernocernaTma extends MistnostSBojemAPredmetem{
+public class CernocernaTma extends Mistnost {
 
     private Kai kai;
     private Peadyn peadyn;
@@ -18,9 +19,20 @@ public class CernocernaTma extends MistnostSBojemAPredmetem{
         super(nazev);
         this.kai = new Kai("hod lanem", "Kai", 7);
         this.pridatPostavu(kai);
-        //this.peadyn = new Peadyn("boj s dykou", "Peadyn");
     }
 
+    /**
+     * nacita ukol v aktualni mistnosti a spusti souboj
+     */
+    @Override
+    public void nactiUkol() {
+        System.out.println("UKOL:");
+        bojSHracem();
+    }
+
+    /**
+     * simuluje souboj pomoci matematickeho prikladu
+     */
     public void bojSHracem() {
         System.out.println("POTKAVAS KAIE! MUSIS HO PORAZIT V SOUBOJI VYRESENIM 3 MATEMATICKYCH PRIKLADU.");
         Scanner sc = new Scanner(System.in);
@@ -60,6 +72,9 @@ public class CernocernaTma extends MistnostSBojemAPredmetem{
         }
     }
 
+    /**
+     * prida do inventare knihu mistnosti
+     */
     public void najdiPredmet(){
         this.pridatPredmet(new KnihaMistnosti("kniha mistnosti"));
         System.out.println("NASEL JSI KNIHU MISTNOSTI");

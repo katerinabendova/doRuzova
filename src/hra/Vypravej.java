@@ -5,11 +5,19 @@ import java.io.IOException;
 
 public class Vypravej extends Command{
 
+    /**
+     * urcuje, jestli hra konci nebo pokracuje
+     * @return 'flase', pokud hra stale pokracuje
+     */
     @Override
     public boolean konec() {
         return false;
     }
 
+    /**
+     * nacita vypraveni z textoveho souboru
+     * @return vypraveni
+     */
     @Override
     public String proved() {
             StringBuilder pribeh = new StringBuilder();

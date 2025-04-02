@@ -1,12 +1,25 @@
 package mistnosti;
 
+import java.io.FileNotFoundException;
 import java.util.Random;
 import java.util.Scanner;
 
-public class ZakleteDivadlo extends MistnostSUkolem{
+public class ZakleteDivadlo extends Mistnost {
     public ZakleteDivadlo(String nazev) {
         super(nazev);
     }
+
+    /**
+     * nacita ukol v aktualni mistnosti a spusti ukol
+     */
+    @Override
+    public void nactiUkol() throws FileNotFoundException {
+        ukol();
+    }
+
+    /**
+     * resi matematicke priklady
+     */
     public void ukol(){
         Scanner sc = new Scanner(System.in);
         Random rd = new Random();

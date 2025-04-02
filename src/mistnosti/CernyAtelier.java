@@ -5,7 +5,7 @@ import postavy.Peadyn;
 import predmety.AtlasovaKouzelnaVarecka;
 import predmety.VeritinDenik;
 
-public class CernyAtelier extends MistnostSPredmetem{
+public class CernyAtelier extends Mistnost {
     private Inventar inventar;
     private Peadyn peadyn;
 
@@ -13,6 +13,17 @@ public class CernyAtelier extends MistnostSPredmetem{
         super(nazev);
     }
 
+    /**
+     * nacita ukol v aktualni mistnosti a spusti hledani predmetu
+     */
+    @Override
+    public void nactiUkol() {
+        najdiPredmet();
+    }
+
+    /**
+     * hrac najde predmety v mistnosti a prida je do inventare
+     */
     public void najdiPredmet(){
         pridatPredmet(new VeritinDenik("Veritin denik"));
         pridatPredmet(new AtlasovaKouzelnaVarecka("Atlasova kouzelna varecka"));
@@ -28,6 +39,5 @@ public class CernyAtelier extends MistnostSPredmetem{
             System.out.println("UZ NEMAS ZIVOTY, HRA PRO TEBE KONCI");
             System.exit(0);
         }
-
     }
 }

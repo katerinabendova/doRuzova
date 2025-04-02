@@ -8,14 +8,25 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class ZrcadlovaKomnata extends MistnostSUkolem {
+public class ZrcadlovaKomnata extends Mistnost {
     private Peadyn peadyn;
 
     public ZrcadlovaKomnata(String nazev) {
         super(nazev);
-       // this.peadyn = new Peadyn("boj s dykou", "Peadyn");
     }
 
+    /**
+     * nacita ukol v aktualni mistnosti a spusti ukol
+     */
+    @Override
+    public void nactiUkol() throws FileNotFoundException {
+        ukol();
+    }
+
+    /**
+     * nacitani ukolu z textoveho souboru a nasledna kontrola spravne odpovedi
+     * @throws FileNotFoundException pokud neni nalezen textovy soubor
+     */
     public void ukol() throws FileNotFoundException {
         try (BufferedReader br = new BufferedReader(new FileReader("znaky.txt"))) {
             String radek = br.readLine();

@@ -6,7 +6,7 @@ import postavy.Verity;
 import java.util.Random;
 import java.util.Scanner;
 
-public class KulataKnihovna extends MistnostSBojem{
+public class KulataKnihovna extends Mistnost {
 
     private Verity verity;
     private Peadyn peadyn;
@@ -18,6 +18,17 @@ public class KulataKnihovna extends MistnostSBojem{
         this.peadyn = new Peadyn( this);
     }
 
+    /**
+     * nacita ukol v aktualni mistnosti a spusti souboj
+     */
+    @Override
+    public void nactiUkol() {
+        boj();
+    }
+
+    /**
+     * boj simuluje ciselny souboj
+     */
     public void boj() {
         System.out.println("VERITY TE VYZIVA DO CISELNEHO SOUBOJE! MUSIS ZADAT VETSI CISLO NEZ ONA.");
         Scanner sc = new Scanner(System.in);

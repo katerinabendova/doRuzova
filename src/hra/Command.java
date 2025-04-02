@@ -8,6 +8,7 @@ public abstract class Command {
     }
 
     public abstract String proved();
+
     public abstract boolean konec();
 
 

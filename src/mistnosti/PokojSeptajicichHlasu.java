@@ -1,6 +1,7 @@
 package mistnosti;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,10 +9,21 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-public class PokojSeptajicichHlasu extends MistnostSUkolem{
+public class PokojSeptajicichHlasu extends Mistnost {
     public PokojSeptajicichHlasu(String nazev) {
         super(nazev);
     }
+    /**
+     * nacita ukol v aktualni mistnosti a spusti ukol
+     */
+    @Override
+    public void nactiUkol() throws FileNotFoundException {
+        ukol();
+    }
+
+    /**
+     * nacita text z textoveho souboru 'had.txt'  aresi, jestli uzivatel zadal spravnou dopoved
+     */
     public void ukol(){
         List<String> radky = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("had.txt"))) {

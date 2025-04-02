@@ -4,6 +4,7 @@ import hra.Inventar;
 import mistnosti.Mistnost;
 import predmety.Predmet;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -22,7 +23,7 @@ public class Peadyn extends Postava {
         zivoty = 3;
         predmety = new ArrayList<>();
         mistnostUkolHotov = new HashSet<>();
-        mistnostUkolHotov.add(new Mistnost("krajina"));
+     //   mistnostUkolHotov.add(new Mistnost("krajina"));
 
     }
 
@@ -32,7 +33,7 @@ public class Peadyn extends Postava {
         zivoty = 3;
         predmety = new ArrayList<>();
         mistnostUkolHotov = new HashSet<>();
-        mistnostUkolHotov.add(new Mistnost("krajina"));
+     //   mistnostUkolHotov.add(new Mistnost("krajina"));
         setAktualniMistnost(vychoziMistnost);
 
     }
@@ -49,32 +50,33 @@ public class Peadyn extends Postava {
         return aktualniMistnost;
     }
 
-    public void setAktualniMistnost(Mistnost mistnost) {
+ public void setAktualniMistnost(Mistnost mistnost) {
         try {
             this.aktualniMistnost = mistnost;
 
-            for (Mistnost misto : mistnostUkolHotov) {
-                if (misto.getNazev().equals(getAktualniMistnost().getNazev())) {
-                    if (misto.getNazev().equals("krajina")) {
-                        System.out.println("hra zacina");
-                        break;
-                    }
-                    System.out.println("V TETO MISTNOSTI UZ JSI BYLA, UKOL PLNIT NEMUSIS.");
-                    break;
-                }
-                System.out.println("VSTUPUJES DO NOVE MISTNOSTI " + mistnost.getNazev());
-                spustUkol();
+            if (!mistnostUkolHotov.contains(mistnost)) {
+                System.out.println("VSTUPUJES DO NOVE MISTNOSTI: " + mistnost.getNazev());
+
+                mistnost.nactiUkol();
+                mistnostUkolHotov.add(mistnost);
+                System.out.println("ÚKOL V TÉTO MÍSTNOSTI BYL ZKONTROLOVÁN.");
+            } else {
+                System.out.println("V TÉTO MÍSTNOSTI UŽ JSI BYL(A), ÚKOL NENÍ TŘEBA ŘEŠIT.");
             }
-        } catch (NullPointerException e) {e.printStackTrace();
+        } catch (NullPointerException | FileNotFoundException e) {
+            e.printStackTrace();
         }
-
-
     }
 
+/*
     private void spustUkol() {
+        aktualniMistnost.maUkol();
+        aktualniMistnost.getUkol();
         mistnostUkolHotov.add(aktualniMistnost);
         System.out.println("UKOL SPLNEN, UZ HO NEMUSIS RESIT.");
     }
+
+ */
 
     public List<Predmet> getPredmety() {
         return predmety;

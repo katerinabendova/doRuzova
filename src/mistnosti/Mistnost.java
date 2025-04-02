@@ -1,10 +1,10 @@
 package mistnosti;
 
 import hra.Inventar;
-import hra.Ukol;
 import postavy.Postava;
 import predmety.Predmet;
 
+import java.io.FileNotFoundException;
 import java.util.*;
 
 public class Mistnost {
@@ -12,7 +12,6 @@ public class Mistnost {
     protected Map<String, Mistnost> vychody;
     protected List<Postava> postavy;
     protected List<Predmet> predmety;
-    protected Ukol ukol;
     protected boolean specialniPodminka;
 
     public Mistnost(String nazev) {
@@ -34,10 +33,6 @@ public class Mistnost {
     public String getNazev() {
         return nazev;
     }
-    public Ukol getUkol() {
-        return ukol;
-    }
-
 
     public Set<String> getMozneVychody(){
         return vychody.keySet();
@@ -54,18 +49,11 @@ public class Mistnost {
         return postavy;
     }
 
-    public Map<String, Mistnost> getVychody() {
-        return vychody;
-    }
-    public void odeberPredmet(Predmet predmet) {
-        if (predmety.contains(predmet)) {
-            predmety.remove(predmet);
-            System.out.println("PREDMET " + predmet.getNazev() + " BYL ODEBRAN Z MISTNOSTI.");
-        } else {
-            System.out.println("TENTO PREDMET NENI V MISTNOSTI.");
-        }
-    }
-
+    /**
+     * overuje, zda hrac muze vstoupit do mistnosti
+     * @param inventar inventar hrace, ktery obsahuje seznam predmetu
+     * @return 'true', pokud hrac muze vstoupit, jinak 'false'
+     */
     public boolean muzeVstoupit(Inventar inventar) {
         if (nazev.equals("knihovna") && !inventar.obsahujePredmet("Veritin denik")) {
             System.out.println("NEMUZES VSTOUPIT BEZ VERITINA DENIKU.");
@@ -73,39 +61,8 @@ public class Mistnost {
         }
         return true;
     }
-    public void zobrazMistnost() {
-        System.out.println("NACHAZIS SE V MISTNOSTI: " + nazev);
-        if (ukol != null) {
-            ukol.zobrazUkol();
-            Scanner sc = new Scanner(System.in);
-            System.out.println("ZADEJ SVOU ODPOVED:");
-            String odpoved = sc.nextLine();
-            spustitUkol(odpoved);
-        }  else {
-            System.out.println("V TETO MISTNOSTI NENI ZADNY UKOL.");
-        }
-            for (Postava postava : postavy) {
-                System.out.println("POTKAVAS: " + postava.getJmeno());
-                postava.komunikuj();
-            }
-        }
 
-    public void spustitUkol(String odpoved) {
-        if (ukol != null && ukol.overOdpoved(odpoved)) {
-            System.out.println("UKOL SPLNEN");
-        } else {
-            System.out.println("SPATNE, HRA PRO TEBE KONCI.");
-            System.exit(0);
-        }
+    public void nactiUkol() throws FileNotFoundException {
     }
-
-    public boolean maUkol() {
-        return ukol != null;
-    }
-    public List<Predmet> getPredmety() {
-        return predmety;
-    }
-
-
 
 }

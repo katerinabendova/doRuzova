@@ -6,6 +6,9 @@ import java.io.IOException;
 
 public class UkazMapu extends Command{
 
+    /**
+     * @return nacte obsah mapy ze sou boru a vrati ho jako text
+     */
     @Override
     public String proved() {
         StringBuilder pribeh = new StringBuilder();
@@ -20,6 +23,10 @@ public class UkazMapu extends Command{
         return pribeh.toString();
     }
 
+    /**
+     * urcuje, jestli hra konci nebo pokracuje
+     * @return 'flase', pokud hra stale pokracuje
+     */
     @Override
     public boolean konec() {
         return false;

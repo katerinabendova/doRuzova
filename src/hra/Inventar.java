@@ -12,6 +12,10 @@ public class Inventar {
         this.predmety = new ArrayList<>();
     }
 
+    /**
+     * pokud neni invenat plny, prida do nej predmet
+     * @param predmet nazev predmetu, ktery se ma do invenatre pridat
+     */
     public void pridejPredmet(String predmet){
         if (predmety.size() < kapacita){
             predmety.add(predmet);
@@ -21,6 +25,10 @@ public class Inventar {
         }
     }
 
+    /**
+     * odebirani predmetu z invenatre
+     * @param predmet nazev predmetu, ktery se ma z invenatre odebrat
+     */
     public void odeberPredmet(String predmet){
         if (predmety.remove(predmet)){
             Konzole.vypis("PREDMET '" + predmet + "' BYL ODEBRAN Z INVENTARE.");
@@ -29,12 +37,18 @@ public class Inventar {
         }
     }
 
+    /**
+     * vysype inventar
+     */
     public void vysypatInvetar(){
         if (predmety.size() <= kapacita){
             predmety.clear();
         }
     }
 
+    /**
+     * vypis obsahu inventare
+     */
     public void vypisInventare(){
         Konzole.vypis("OBSAH INVENTARE: " + String.join(", ", predmety));
     }
@@ -43,6 +57,12 @@ public class Inventar {
         return predmety.contains(nazev);
     }
 
+    /**
+     * odemknuti mistnosti na zaklade splnenzch podminek
+     * @param navstiveneMistnosti jiz navstivene mistnosti
+     * @param pocetMistnosti celkovy pocet mistnosti
+     * @return pokud jsou splneny podminky, mistnost se odemkne
+     */
     public boolean odemkni(Set<String> navstiveneMistnosti, int pocetMistnosti){
         if (!obsahujePredmet("diamantovy klic")){
             System.out.println("NEMAS DIAMANTOVY KLIC.");
@@ -56,6 +76,4 @@ public class Inventar {
         }
 
     }
-
-
 }
